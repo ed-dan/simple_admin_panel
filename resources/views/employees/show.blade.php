@@ -100,7 +100,7 @@
                     Employee photo
                 </label>
                 <img class="hidden w-40 mr-1 md:inline border border-gray-200 rounded p-2 w-full"
-                     src="{{$employee->photo ? asset('storage/' . $employee->photo) : asset('/images/no-image.png')}}"
+                     src="{{asset('storage/' . $employee->photo)}}"
                      alt=""/>
             </div>
             <div class="mb-6">

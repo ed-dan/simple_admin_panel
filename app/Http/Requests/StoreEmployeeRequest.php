@@ -40,7 +40,7 @@ class StoreEmployeeRequest extends FormRequest
 
         return [
             'name' => ['required', 'min:2', 'max:256'],
-            'photo' => ['image','mimes:jpeg,png,jpg', 'dimensions:min_width=300,min_height=300'],
+//            'photo' => ['image','mimes:jpeg,png,jpg', 'dimensions:min_width=300,min_height=300'],
             'phone' => ['required', 'min:10', 'max:10',  Rule::unique('employees', 'phone')],
             'salary' => ['required', 'numeric'],
             'position_id' => 'required',

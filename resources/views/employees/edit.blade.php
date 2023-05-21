@@ -15,7 +15,7 @@
                             <img class="image-update hidden w-40 mr-1 md:inline border border-gray-200 rounded p-2 w-full"
                                  src="{{$employee->photo ? asset('storage/' . $employee->photo) : asset('/images/no-image.png')}}"
                                  alt=""/>
-                            <h1 class="">?</h1>
+
                         </div>
                         <input type="file" class="form-control mt-3" name="photo"/>
                     </div>

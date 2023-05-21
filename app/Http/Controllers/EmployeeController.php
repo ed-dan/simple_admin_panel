@@ -42,7 +42,7 @@ class EmployeeController extends Controller
         ]);
     }
 
-    // show create listing
+// show create listing
     public function create()
     {
         return view('employees.create', ['positions' => Position::all()]);
@@ -51,6 +51,8 @@ class EmployeeController extends Controller
     // store listing data
     public function store(StoreEmployeeRequest $request)
     {
+
+//        dd($request);
         $formFields = $request->validated();
         if ($request->hasFile('photo')) {
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
@@ -69,7 +71,7 @@ class EmployeeController extends Controller
 
         $formFields = \request()->validate([
             'name' => 'required',
-            'phone' => ['required', 'numeric', Rule::unique('employees', 'phone')->ignore($employee->id)],
+            'phone' => ['required', Rule::unique('employees', 'phone')->ignore($employee->id)],
             'salary' => 'required',
             'position_id' => 'required',
             'email' => ['required', 'email', Rule::unique('employees', 'email')->ignore($employee->id)],
