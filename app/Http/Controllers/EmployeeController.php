@@ -13,6 +13,21 @@ use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
+    public function averageSalaries(Request $request)
+    {
+
+        //return response()->download($data);
+    }
+
+    public function jsonFileDownload()
+    {
+        $data = json_encode(['Text One', 'Text Two', 'Text Three']);
+
+        $jsongFile = time() . '_file.json';
+        File::put(public_path('/upload/json/'.$jsongFile), $data);
+        return Response::download(public_path('/upload/jsonfile/'.$jsongFile));
+    }
+
     public function autocomplete(Request $request)
     {
         $data = Employee::select("name as value", "id")
@@ -51,8 +66,6 @@ class EmployeeController extends Controller
     // store listing data
     public function store(StoreEmployeeRequest $request)
     {
-
-//        dd($request);
         $formFields = $request->validated();
         if ($request->hasFile('photo')) {
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
@@ -68,7 +81,6 @@ class EmployeeController extends Controller
 
     public function update(Employee $employee)
     {
-
         $formFields = \request()->validate([
             'name' => 'required',
             'phone' => ['required', Rule::unique('employees', 'phone')->ignore($employee->id)],

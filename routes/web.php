@@ -43,7 +43,6 @@ Route::get('/employees/{employee}',[EmployeeController::class, 'show'])->name('e
 
 Route::get('autocomplete',[App\Http\Controllers\EmployeeController::class, 'autocomplete'])->name('autocomplete');
 
-//Route::get('/orderByTitle', [PositionController::class, 'order'])->name('position.order');
 
 // show all positions
 Route::get('/positions', [PositionController::class,'index'])->name('position.index');
@@ -62,10 +61,13 @@ Route::patch('/positions/{position}',[PositionController::class, 'update'])->nam
 // delete position data
 Route::delete('/positions/{position}',[PositionController::class, 'destroy'])->name('position.delete');
 
+Route::get('/positions/file-download', [PositionController::class, 'file_download'])->name('position.download');
+Route::get('//file-download', [PositionController::class, 'file_download'])->name('position.download');
 
 //// must be under create and store route
 // show one listing
 Route::get('/positions/{position}',[PositionController::class, 'show'])->name('position.show');
+
 
 
 Auth::routes();

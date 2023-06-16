@@ -7,6 +7,7 @@
         </a> or <a href="/register"> register </a> to update table
     @else
         @include('partials._header')
+
         @include('partials._search')
         <div class="mt-3 ">
             <div class="card-body p-0">

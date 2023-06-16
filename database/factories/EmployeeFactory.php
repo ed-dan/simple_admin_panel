@@ -18,6 +18,8 @@ class EmployeeFactory extends Factory
     {
         $operators = ['50', '66', '93', '67'];
         return [
+
+            'photo' => 'photos/' . 'avatar' .  rand(1,5) . '.png',
             'name' => $this->faker->name(),
             'phone' => "+380 (" . $operators[rand(0,3)]. ") " . rand(1111111,9999999),
             'email' => $this->faker->email(),

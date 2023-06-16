@@ -8,8 +8,14 @@
                 <!-- Navbar Search -->
                 <li class="nav-item mt-2 mr-2">
                     <button class="btn btn-default btn-lg mr-5">
-                        <a class="link-color" href="{{ $title }}/create">  Add {{ucfirst($title)}} </a>
+                        <a class="link-color" href="{{ $title }}/create"> Add {{ucfirst($title)}} </a>
                     </button>
+                    @if( $title === "positions")
+                        <button class="btn btn-default btn-lg mr-5">
+                            <a class="link-color" href="{{ $title }}/file-download"> Calculate Salaries </a>
+                        </button>
+                    @endif
+                    
                 </li>
             </ul>
         </div><!-- /.row -->

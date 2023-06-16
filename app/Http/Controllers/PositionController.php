@@ -9,9 +9,20 @@ use Illuminate\Validation\Rule;
 
 class PositionController extends Controller
 {
+    public static function file_download()
+    {
+            return response()->streamDownload(function () {
+                foreach ( array(Position::all()) as $position){
+
+                }
+                echo $position->toJson();
+            }, 'positions.json');
+        }
+
     // show all listing
     public static function index()
     {
+
         return view('positions.index', ['name' => 'positions', 'title' => 'positions',
             'positions' => Position::sortable()->latest()->filter(request(['search']))
                 ->paginate(10),

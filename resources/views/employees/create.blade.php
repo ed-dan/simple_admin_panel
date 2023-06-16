@@ -3,10 +3,12 @@
     <div>
         <h2 class="text-2xl font-bold uppercase mb-1">Add Employee</h2>
         <link rel="stylesheet" href="/css/app.css">
-        <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css')}}"
+              rel="stylesheet">
         <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js')}}"></script>
         <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css') }}" />
+        <link rel="stylesheet"
+              href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css') }}"/>
 
 
         <form class="form-horizontal" method="POST" action="/employees" enctype="multipart/form-data">
@@ -25,7 +27,8 @@
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control"  name="name" placeholder="Enter your name"  value="{{old('name')}}">
+                        <input type="text" class="form-control" name="name" placeholder="Enter your name"
+                               value="{{old('name')}}">
                     </div>
                     @error('name')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -35,22 +38,9 @@
                 <div class="form-group row">
                     <label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
                     <div class="col-sm-10">
-                        <input id="autogap" maxlength="10" type="text" class="form-control"  name="phone"
-                               placeholder="Required format 000 00 00 000"  value="{{old('phone')}}">
+                        <input id="autogap" maxlength="10" type="text" class="form-control" name="phone"
+                               placeholder="Required format 000 00 00 000" value="{{old('phone')}}">
                     </div>
-
-{{--                    <script>--}}
-{{--                        var input = document.getElementById("autogap");--}}
-
-{{--                        input.onkeyup = function () {--}}
-{{--                            if (input.value.length > 0) {--}}
-{{--                                if (input.value.length == 3 || input.value.length == 6 || input.value.length == 9) {--}}
-{{--                                    input.value += " ";--}}
-{{--                                }--}}
-{{--                            }--}}
-{{--                        }--}}
-{{--                    </script>--}}
-
                     @error('phone')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -59,7 +49,8 @@
                 <div class="form-group row">
                     <label for="phone" class="col-sm-2 col-form-label"> Contact Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control"  name="email" placeholder="Enter your email"  value="{{old('email')}}">
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email"
+                               value="{{old('email')}}">
                     </div>
                     @error('email')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -69,18 +60,19 @@
                 <div class="form-group row">
                     <label for="salary" class="col-sm-2 col-form-label">Salary</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control"  name="salary" placeholder="From 000 to 00000" value="{{old('salary')}}"/>
+                        <input type="text" class="form-control" name="salary" placeholder="From 000 to 00000"
+                               value="{{old('salary')}}"/>
                     </div>
                     @error('salary')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
 
-                <div  class="form-group row mr--1 " >
+                <div class="form-group row mr--1 ">
                     <label for="position_id" class="col-sm-2 col-form-label">Position</label>
                     <div class="col-sm-10">
-                        <select name="position_id"  class="select-width form-control ">
-                            <option> </option>
+                        <select name="position_id" class="select-width form-control ">
+                            <option></option>
                             @foreach($positions as $position)
                                 <option value="{{ old('position_id') ?? $position->id ?? '1'}}">
                                     {{ $position->title }}
@@ -96,25 +88,26 @@
                 <div class="form-group row">
                     <label for="date_of_employment" class="col-sm-2 col-form-label">Date of employment</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control"  name="date_of_employment"  placeholder="Example: Remote, Boston MA, etc"  value="{{old('date_of_employment')}}">
+                        <input type="date" class="form-control" name="date_of_employment"
+                               placeholder="Example: Remote, Boston MA, etc" value="{{old('date_of_employment')}}">
                     </div>
                     @error('date_of_employment')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
 
-
                 <div class="form-group row">
                     <label for="head" class="col-sm-2 col-form-label">Head</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control"  id="search" name="head" placeholder="You need to choose Head"  value="{{old('head')}}">
+                        <input type="text" class="form-control" id="search" name="head"
+                               placeholder="You need to choose Head" value="{{old('head')}}">
                     </div>
-                    <script type="text/javascript" >
+                    <script type="text/javascript">
 
                         var path = "{{ route('autocomplete') }}";
 
-                        $( "#search" ).autocomplete({
-                            source: function( request, response ) {
+                        $("#search").autocomplete({
+                            source: function (request, response) {
                                 $.ajax({
                                     url: path,
                                     type: 'GET',
@@ -122,8 +115,8 @@
                                     data: {
                                         search: request.term
                                     },
-                                    success: function( data ) {
-                                        response( data );
+                                    success: function (data) {
+                                        response(data);
                                     }
                                 });
                             },
@@ -133,9 +126,7 @@
                                 return false;
                             }
                         });
-
                     </script>
-
                     @error('head')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
