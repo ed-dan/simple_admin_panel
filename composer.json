@@ -12,7 +12,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^4.2"
+        "laravel/ui": "^4.2",
+        "thiagoalessio/tesseract_ocr": "^2.13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -9,6 +9,7 @@ use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
@@ -41,6 +42,7 @@ class EmployeeController extends Controller
     // show all listing
     public static function index()
     {
+        Log::emergency('The system is down!');
         return view('employees.index', [ 'name' => '/', 'title' => 'employees',
             'employees' => Employee::sortable()->latest()->orderBy('name')->filter(request([ 'search']))
                 ->paginate(10),
