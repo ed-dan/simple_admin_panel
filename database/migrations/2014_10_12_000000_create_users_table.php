@@ -21,6 +21,13 @@ return new class extends Migration
             $table->string('password');
             $table->string('api_token');
             $table->rememberToken();
+
+            $table->unsignedBigInteger('position_id')->default('1');
+            $table->unsignedBigInteger("task_id")->nullable();
+            $table->unsignedBigInteger("lead_id")->nullable();
+            $table->index('task_id','employee_task_idx');
+            $table->index('lead_id','employee_lead_idx');
+
             $table->timestamps();
         });
     }
